@@ -1,0 +1,18 @@
+{
+  "name": "SkaeleFrontend",
+  "version": "0.0.0",
+  "description": "Frontend template including angular, ui-router, bootstrap, jquery",
+  "main": "index.js",
+  "dependencies": {
+    "gulp": "^3.8.11",
+    "gulp-inject": "^1.2.0",
+    "gulp-webserver": "^0.9.1",
+    "wiredep": "^2.2.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}

@@ -23,16 +23,18 @@
     <![endif]-->
   </head>
   <body>
-    <div class="container" ng-view>
+    <div class="container" ui-view>
     </div>
 
     <!-- bower:js -->
     <script src="bower_components/jquery/dist/jquery.js"></script>
     <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
     <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
     <!-- endbower -->
     <!-- inject:js -->
     <script src="app.js"></script>
+    <script src="routes.js"></script>
     <script src="modules/home/homeController.js"></script>
     <!-- endinject -->
   </body>

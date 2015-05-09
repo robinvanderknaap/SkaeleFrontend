@@ -10,11 +10,22 @@ var minifyCss = require('gulp-minify-css');
 var rev = require('gulp-rev');
 
 // Setup webserver for development environment
-gulp.task('serve', function() {
+gulp.task('serve', ['wireup'], function() {
   
-  gulp.src('src')
+  return gulp.src('src')
     .pipe(webserver({
       livereload: true,
+      directoryListing: false,
+      open: true
+    }));
+});
+
+// Setup webserver for production environment
+gulp.task('serve-dist', ['build'], function() {
+  
+  return gulp.src('dist')
+    .pipe(webserver({
+      livereload: false,
       directoryListing: false,
       open: true
     }));
@@ -33,39 +44,17 @@ gulp.task('build', ['wireup','clean'], function(){
       }))
       .pipe(gulp.dest('./dist'));
 
-  // // Copy remaining files to dist folder
-  // gulp.src(['./src/**/*.*', , '!./src/bower_components/**/*.*', '!./src/**/*.js', '!./src/**/*.css'])
-  //   .pipe(gulp.dest('./dist'));
-
-  // // Serve content of dist folder
-  // gulp.src('dist')
-  //   .pipe(webserver({
-  //     livereload: false,
-  //     directoryListing: false,
-  //     open: true
-  //   }));
+  // Copy remaining files to dist folder
+  return gulp.src(['./src/**/*.*', '!.src/index.html', '!./src/bower_components/**/*.*', '!./src/**/*.js', '!./src/**/*.css'])
+    .pipe(gulp.dest('./dist'));
 });
 
-// gulp.task('minifyjs', ['wireup','clean'], function(){
-
-//   gulp.src(['./src/**/*.js', '!./src/bower_components/**/*.*'])
-//     .pipe(concat('concat.js'))
-//     .pipe(gulp.dest('dist'))
-//     .pipe(rename('scripts.js'))
-//     .pipe(uglify())
-//     .pipe(gulp.dest('dist'));
-// });
-
-// gulp.task('minifycss', ['wireup','clean'], function(){
-  
-// });
-
-// Setup dependencies in index.html, both vendor scripts (bower) and your own scripts
+// Wireup dependencies, uses wiredep for bower components and gulp-inject for custom css and js
 gulp.task('wireup', function () {
   
   var inject = require('gulp-inject');
   
-  gulp.src('./src/index.html')
+  return gulp.src('./src/index.html')
     .pipe(wiredep())
     .pipe(inject(gulp.src(['./src/**/*.js', './src/**/*.css', '!./src/bower_components/**/*.*'], {read: false}), {relative: true}))
     .pipe(gulp.dest('./src'));
@@ -74,7 +63,7 @@ gulp.task('wireup', function () {
 // Remove all content from dist folder
 gulp.task('clean', function () {
 
-  del([
+  return del([
     'dist/**/*',
   ]);
 });

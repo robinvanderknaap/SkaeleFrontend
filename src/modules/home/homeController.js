@@ -1,6 +1,6 @@
 (function(){
 	
-	angular.module('app').controller('HomeController', HomeController);
+	angular.module('app').controller('HomeController', ['$scope','$http', HomeController]);
 
 	function HomeController($scope, $http){
 		

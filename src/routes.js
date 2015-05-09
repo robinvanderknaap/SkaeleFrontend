@@ -2,7 +2,9 @@
 
 	var app = angular.module('app');
 
-	app.config(function($stateProvider, $urlRouterProvider){
+	app.config(['$stateProvider', '$urlRouterProvider', ConfigureRoutes]);
+
+	function ConfigureRoutes($stateProvider, $urlRouterProvider){
 
 		// For any unmatched url, redirect to home
   		$urlRouterProvider.otherwise("/");
@@ -16,5 +18,5 @@
 		      url: "/about",
 		      templateUrl: "modules/about/about.html"
 		    })
-	});
+	}
 }());

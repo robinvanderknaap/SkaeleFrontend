@@ -36,8 +36,8 @@ gulp.task('build', ['wireup','clean'], function(){
 
   gulp.src('./src/index.html')
       .pipe(usemin({
-        vendorcss: [minifyCss(), 'concat'],
-        customcss: [minifyCss(), 'concat'],
+        vendorcss: [minifyCss(), 'concat', rev()],
+        customcss: [minifyCss(), 'concat', rev()],
         html: [minifyHtml({empty: true})],
         vendorjs: [uglify(), rev()],
         customjs: [uglify(), rev()]

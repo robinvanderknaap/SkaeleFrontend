@@ -34,6 +34,7 @@ gulp.task('serve-dist', ['build'], function() {
 // Build production environment, output is stored in dist folder
 gulp.task('build', ['wireup','clean'], function(){
 
+  // Minify js, css, and index html
   gulp.src('./src/index.html')
       .pipe(usemin({
         vendorcss: [minifyCss(), 'concat', rev()],
@@ -44,8 +45,13 @@ gulp.task('build', ['wireup','clean'], function(){
       }))
       .pipe(gulp.dest('./dist'));
 
-  // Copy remaining files to dist folder
-  return gulp.src(['./src/**/*.*', '!.src/index.html', '!./src/bower_components/**/*.*', '!./src/**/*.js', '!./src/**/*.css'])
+  // Minify remaining html files
+  gulp.src('./src/**/*.html')
+    .pipe(minifyHtml({empty: true}))
+    .pipe(gulp.dest('./dist'));
+
+  // Copy remaining files to dist folder (eg images, fonts, etc.)
+  return gulp.src(['./src/**/*.*', '!./src/**/*.html', '!./src/**/*.js', '!./src/**/*.css', '!./src/bower_components/**/*.*'])
     .pipe(gulp.dest('./dist'));
 });
 

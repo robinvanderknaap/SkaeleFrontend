@@ -1,20 +1,10 @@
 (function(){
 	
-	angular.module('app').controller('HomeController', ['$scope','$http', HomeController]);
+	angular.module('app').controller('HomeController', ['$scope', 'configService', HomeController]);
 
-	function HomeController($scope, $http){
+	function HomeController($scope, configService){
 		
-		$scope.message = "Mooie kerel";
-
-		var onRobinLoaded = function(response){
-			$scope.robin = response.data;
-		}
-
-		$scope.showRobin = function(){
-			$http.get('https://api.github.com/users/robinvanderknaap')
-				.then(onRobinLoaded);
-		}
-
+		$scope.environmentSettingsFound = configService.environment != null;
 	}
 
 }())

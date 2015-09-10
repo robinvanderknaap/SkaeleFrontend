@@ -7,15 +7,12 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <title>Skaele Frontend Template</title>
 
-    <!-- build:vendorcss vendor.css -->
     <!-- bower:css -->
-    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
     <!-- endbower -->
-    <!-- endbuild -->
 
-    <!-- build:customcss style.css -->
+    <!-- build:customcss assets/style.css -->
     <!-- inject:css -->
-    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="styles/css/main.css">
     <!-- endinject -->
     <!-- endbuild -->
 
@@ -32,22 +29,26 @@
     
     <div class="container" ui-view></div>
 
-    <!-- build:vendorjs vendor.js -->
+    <!-- build:vendorjs assets/vendor.js -->
     <!-- bower:js -->
-    <script src="bower_components/jquery/dist/jquery.js"></script>
-    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/bootstrap-sass/assets/javascripts/bootstrap.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
     
-    <!-- build:customjs lib.js -->
-    <!-- inject:js -->
-    <script src="app.js"></script>
-    <script src="routes.js"></script>
-    <script src="modules/about/aboutController.js"></script>
-    <script src="modules/home/homeController.js"></script>
+    <!-- build:customjs assets/lib.js -->
+    <!-- inject:js -->    
+    <script src="app.js"></script>    
+    <script src="environment-settings.js"></script>    
+    <script src="routes.js"></script>    
+    <script src="services/config-service.js"></script>    
+    <script src="modules/about/aboutController.js"></script>    
+    <script src="modules/home/homeController.js"></script>    
     <!-- endinject -->
     <!-- endbuild -->
   </body>
 </html>
+
+		

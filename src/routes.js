@@ -12,11 +12,13 @@
   		$stateProvider
 		    .state('home', {
 		      url: "/",
-		      templateUrl: "modules/home/home.html"
+		      templateUrl: "modules/home/home.html",
+			  controller: "HomeController"
 		    })
 		    .state('about', {
 		      url: "/about",
-		      templateUrl: "modules/about/about.html"
+		      templateUrl: "modules/about/about.html",
+			  controller: "AboutController"
 		    })
 	}
 }());

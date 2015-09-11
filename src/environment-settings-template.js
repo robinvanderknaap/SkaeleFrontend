@@ -5,5 +5,7 @@ var environmentSettings = {
 	port: 8001
 }
 
-// Leave line below untouched. This how gulp file is also able to use this settings file. ('require' needs a module)
-module.exports = environmentSettings;
+// Leave lines below untouched. This how gulp file is also able to use this settings file. ('require' needs a module)
+if(typeof module !== 'undefined'){
+   module.exports = environmentSettings;
+};

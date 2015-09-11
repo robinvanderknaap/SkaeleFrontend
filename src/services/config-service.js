@@ -14,4 +14,4 @@
 		this.exampleLocalSetting = 5;
 	}
 
-}())
+}());

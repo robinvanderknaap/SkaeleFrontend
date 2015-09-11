@@ -7,4 +7,4 @@
 		$scope.environmentSettingsFound = configService.environment != null;
 	}
 
-}())
+}());

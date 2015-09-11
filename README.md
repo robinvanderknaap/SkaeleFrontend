@@ -24,6 +24,14 @@ To start the template, run npm and bower first to download all the packages (pac
 To spinup a webserver and immediately start the webpages:
 
 	gulp serve
+	
+To turn the frontend into a production version, with all html, css and js minified and concattenated, you can run 
+
+	gulp build
+	
+The output will be placed in a folder called 'dist'. If you want to see if the production actually works run
+
+	gulp serve-dist
 
 
 

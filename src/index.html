@@ -25,9 +25,9 @@
   </head>
   <body>
     
-    <div ng-include="'/modules/shared/mainmenu/mainmenu.html'"></div>
+    <div ui-view="header"></div>
     
-    <div class="container" ui-view></div>
+    <div class="container" ui-view="main"></div>
 
     <!-- build:vendorjs assets/vendor.js -->
     <!-- bower:js -->

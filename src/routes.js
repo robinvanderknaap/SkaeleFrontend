@@ -10,15 +10,30 @@
   		$urlRouterProvider.otherwise("/");
 
   		$stateProvider
-		    .state('home', {
-		      url: "/",
-		      templateUrl: "modules/home/home.html",
-			  controller: "HomeController"
+		  	.state('root', {
+				views:{
+					'header@':{
+						templateUrl: "modules/shared/header/header.html"
+					},
+				}
+			})
+		    .state('root.home', {
+		      	url: "/",
+			  	views:{
+					'main@':{
+						templateUrl: "modules/home/home.html",
+			  			controller: "HomeController"
+					}
+				}
 		    })
-		    .state('about', {
+		    .state('root.about', {
 		      url: "/about",
-		      templateUrl: "modules/about/about.html",
-			  controller: "AboutController"
+			  views:{
+					'main@':{
+						templateUrl: "modules/about/about.html",
+			  			controller: "AboutController"
+					}
+				}
 		    })
 	}
 }());

@@ -21,7 +21,9 @@ To start the template, run npm and bower first to download all the packages (pac
 
 	bower install
 
-To spinup a webserver and immediately start the webpages:
+Now you have to create a settings file called 'environment-settings.js. This needs to be placed in the 'src' folder. This file will contain all settings which are specific to the environment. A template file can be found in the same src folder, called environment-settings-template.js. You can copy and rename this file, and change the values according to your environment. The settings file is ignored by version control, so other developers will not be affected by the changes you make in the settings file.
+
+When the settings file is in place, you can spinup a webserver and immediately start the webpages by running:
 
 	gulp serve
 

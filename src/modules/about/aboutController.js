@@ -1,6 +1,6 @@
 (function(){
 	
-	angular.module('app').controller('AboutController', ['$scope','$http', AboutController]);
+	angular.module('app').controller('AboutController', AboutController);
 
 	function AboutController($scope, $http){
 

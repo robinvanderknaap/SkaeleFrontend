@@ -19,7 +19,11 @@ var usemin = require('gulp-usemin');
 var minifyHtml = require('gulp-minify-html');
 var minifyCss = require('gulp-minify-css');
 var rev = require('gulp-rev');
+var ngAnnotate = require('gulp-ng-annotate');
 var environmentSettings = require('./src/environment-settings');
+
+
+
 
 // Wireup bower dependencies
 gulp.task('wireup-bower', function () {
@@ -42,7 +46,7 @@ gulp.task('wireup', ['sass'], function () {
   var inject = require('gulp-inject');
   
   // Wireup all custom js and css (exclude bower files, they are already wired using wiredep)
-  return gulp.src('./src/index.html') // Base property: http://stackoverflow.com/a/24412960/426840
+  return gulp.src('./src/index.html') 
     .pipe(inject(gulp.src(['./src/**/*.js', './src/**/*.css', '!./src/bower_components/**/*.*', '!./src/environment-settings-template.js'], {read: false}), {relative: true}))
     .pipe(gulp.dest('./src'));
 });
@@ -76,6 +80,11 @@ gulp.task('clean', function () {
   ]);
 });
 
+// gulp.task('ng-annotate', function () {
+//     return gulp.src(['./src/**/*.js', '!./src/bower_components/**/*.*'])
+//         .pipe(ngAnnotate())
+//         .pipe(gulp.dest('./src'));
+// });
 
 gulp.task('minify', ['wireup','clean'], function(){
     
@@ -87,7 +96,7 @@ gulp.task('minify', ['wireup','clean'], function(){
         customcss: [minifyCss(), 'concat', rev()],
         html: [minifyHtml({empty: true})],
         vendorjs: [uglify(), rev()],
-        customjs: [uglify(), rev()]
+        customjs: [ngAnnotate(),uglify(), rev()]
       }))     
       .pipe(gulp.dest('./dist'));
 });

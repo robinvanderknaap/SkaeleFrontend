@@ -3,7 +3,7 @@
 	// Load environment dependent settings
 	angular.module('app').constant('environmentSettings', window.environmentSettings);
 	
-	angular.module('app').service('configService', ['environmentSettings', ConfigService]);
+	angular.module('app').service('configService', ConfigService);
 
 	function ConfigService(environmentSettings){
 		

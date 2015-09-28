@@ -1,10 +1,10 @@
 (function(){
 	
-	angular.module('app').controller('HomeController', ['$scope', 'configService', HomeController]);
+	angular.module('app').controller('HomeController', HomeController);
 
 	function HomeController($scope, configService){
 		
 		$scope.environmentSettingsFound = configService.environment != null;
 	}
-
+	
 }());

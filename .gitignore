@@ -2,4 +2,4 @@ src/bower_components
 node_modules
 dist
 environment-settings.js
-frontend/src/styles/css
+src/styles/css

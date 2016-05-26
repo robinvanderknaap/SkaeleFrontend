@@ -20,6 +20,7 @@ var minifyHtml = require('gulp-minify-html');
 var minifyCss = require('gulp-minify-css');
 var rev = require('gulp-rev');
 var ngAnnotate = require('gulp-ng-annotate');
+var gutil = require('gulp-util');
 var environmentSettings = require('./src/environment-settings');
 
 gulp.task('copy-fonts', function(){
@@ -98,7 +99,7 @@ gulp.task('minify', ['wireup','clean'], function(){
         customcss: [minifyCss(), 'concat', rev()],
         html: [minifyHtml({empty: true})],
         vendorjs: [uglify(), rev()],
-        customjs: [ngAnnotate(),uglify(), rev()]
+        customjs: [ngAnnotate(), uglify().on('error',gutil.log), rev()]
       }))     
       .pipe(gulp.dest('./dist'));
 });

@@ -20,7 +20,9 @@ var minifyHtml = require('gulp-minify-html');
 var minifyCss = require('gulp-minify-css');
 var rev = require('gulp-rev');
 var ngAnnotate = require('gulp-ng-annotate');
+var favicons = require("gulp-favicons");
 var gutil = require('gulp-util');
+var inject = require('gulp-inject');
 var environmentSettings = require('./src/environment-settings');
 
 gulp.task('copy-fonts', function(){
@@ -83,16 +85,24 @@ gulp.task('clean', function () {
   ]);
 });
 
-// gulp.task('ng-annotate', function () {
-//     return gulp.src(['./src/**/*.js', '!./src/bower_components/**/*.*'])
-//         .pipe(ngAnnotate())
-//         .pipe(gulp.dest('./src'));
-// });
+gulp.task("favicons", ['wireup','clean'], function () {
+    return gulp.src("./src/favicon.png").pipe(favicons({
+        html: "./favicons.html",
+        pipeHTML: true
+    }))
+    .on("error", gutil.log)
+    .pipe(gulp.dest("./dist"));
+});
 
-gulp.task('minify', ['wireup','clean'], function(){
+gulp.task('minify', ['favicons'], function(){
     
     return gulp.src(['./src/index.html']) // https://github.com/zont/gulp-usemin/issues/89
-      
+      .pipe(inject(gulp.src(['./dist/favicons.html']), {
+         starttag: '<!-- inject:favicons -->',
+         transform: function(filepath, file) {
+           return file.contents.toString();
+         }
+      }))
       // When using usemin, make sure the build anchors in the html contain at least one file, otherwise this task will fail silently
       .pipe(usemin({
         vendorcss: [minifyCss(), 'concat', rev()],
@@ -100,7 +110,7 @@ gulp.task('minify', ['wireup','clean'], function(){
         html: [minifyHtml({empty: true})],
         vendorjs: [uglify(), rev()],
         customjs: [ngAnnotate(), uglify().on('error',gutil.log), rev()]
-      }))     
+      }))
       .pipe(gulp.dest('./dist'));
 });
 

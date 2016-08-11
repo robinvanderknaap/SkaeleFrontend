@@ -1,26 +1,29 @@
 {
-  "name": "courta",
-  "description": "Courta Platform",
+  "name": "skaele-frontend",
+  "description": "Skaele Frontend",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Webpirates/courta.git"
+    "url": "git+https://github.com/robinvanderknaap/SkaeleFrontend.git"
   },
   "license": "ISC",
   "dependencies": {
-    "bower": "^1.5.2",
-    "del": "^2.0.1",
-    "gulp": "^3.9.0",
-    "gulp-favicons": "^2.2.6",
-    "gulp-inject": "^1.5.0",
-    "gulp-minify-css": "^1.2.1",
-    "gulp-minify-html": "^1.0.4",
-    "gulp-ng-annotate": "^1.1.0",
-    "gulp-rev": "^6.0.1",
-    "gulp-sass": "^2.0.4",
-    "gulp-uglify": "^1.4.0",
-    "gulp-usemin": "^0.3.14",
-    "gulp-util": "^3.0.7",
-    "gulp-webserver": "^0.9.1",
-    "wiredep": "^3.0.0-beta"
+    "bower": "*",
+    "del": "*",
+    "gulp": "*",
+    "gulp-favicons": "*",
+    "gulp-inject": "*",
+    "gulp-minify-css": "*",
+    "gulp-minify-html": "*",
+    "gulp-ng-annotate": "*",
+    "gulp-rev": "*",
+    "gulp-sass": "*",
+    "gulp-uglify": "*",
+    "gulp-usemin": "*",
+    "gulp-util": "*",
+    "gulp-webserver": "*",
+    "wiredep": "*"
+  }
+  "devDependencies": {
+    "bower-shrinkwrap-resolver": "~0.4.1"
   }
 }
